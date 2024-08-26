@@ -1,22 +1,34 @@
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText as BasePrismicRichText } from "@prismicio/react";
-
-import { Heading } from "./Heading";
+import { slugifyHeading } from "@/lib/slugifyHeading";
+import { Heading } from "@/components/head/Heading";
 
 /** @type {import("@prismicio/react").JSXMapSerializer} */
 const defaultComponents = {
-  heading1: ({ children }) => (
-    <Heading as="h2" size="3xl" className="mb-7 mt-12 first:mt-0 last:mb-0">
+  heading1: ({ children, node }) => (
+    <Heading
+      as="h2"
+      size="3xl"
+      className="mb-7 mt-12 first:mt-0 last:mb-0 scroll-mt-6"
+      id={slugifyHeading(node)}>
       {children}
     </Heading>
   ),
-  heading2: ({ children }) => (
-    <Heading as="h3" size="2xl" className="mb-7 last:mb-0">
+  heading2: ({ children, node }) => (
+    <Heading
+      as="h3"
+      size="2xl"
+      className="mb-7 last:mb-0 scroll-mt-6"
+      id={slugifyHeading(node)}>
       {children}
     </Heading>
   ),
-  heading3: ({ children }) => (
-    <Heading as="h4" size="xl" className="mb-7 last:mb-0">
+  heading3: ({ children, node }) => (
+    <Heading
+      as="h4"
+      size="xl"
+      className="mb-7 last:mb-0 scroll-mt-6"
+      id={slugifyHeading(node)}>
       {children}
     </Heading>
   ),
@@ -44,8 +56,7 @@ const defaultComponents = {
   hyperlink: ({ children, node }) => (
     <PrismicNextLink
       field={node.data}
-      className="underline decoration-1 underline-offset-2"
-    >
+      className="underline decoration-1 underline-offset-2">
       {children}
     </PrismicNextLink>
   ),

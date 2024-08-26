@@ -4,13 +4,16 @@ import { PrismicNextLink } from "@prismicio/next";
 import { PrismicText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-import { Layout } from "@/components/Layout";
-import { Bounded } from "@/components/Bounded";
-import { Heading } from "@/components/Heading";
+import { Layout } from "@/components/layout/Layout";
+import { Bounded } from "@/components/layout/Bounded";
+import { Heading } from "@/components/head/Heading";
 import { HorizontalDivider } from "@/components/HorizontalDivider";
-
 import { Comments } from "@/components/Comments";
+import { Toc } from "@/components/toc/Toc";
+
+import { components } from "@/slices";
+
+import { slugifyHeading } from "@/lib/slugifyHeading";
 import { supabase } from "@/lib/supabse/server";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -85,7 +88,7 @@ export default async function Page({ params }) {
     .from("comments")
     .select("post_id, nickname, payload, created_at, id, published, email")
     .eq("post_id", article.id)
-    .eq("published", true) // only fetch published comments
+    .eq("published", true)
     .order("created_at", { ascending: true });
 
   return (
@@ -101,13 +104,16 @@ export default async function Page({ params }) {
       </Bounded>
       <article>
         <Bounded className="pb-0">
-          <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
+          <h1
+            className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl scroll-mt-12"
+            id={slugifyHeading({ text: prismic.asText(article.data.title) })}>
             <PrismicText field={article.data.title} />
           </h1>
           <p className="font-serif italic tracking-tighter text-slate-500">
             {dateFormatter.format(date)}
           </p>
         </Bounded>
+        <Toc slices={article.data.slices} title={article.data.title} />
         <SliceZone slices={article.data.slices} components={components} />
         <Comments id={article.id} uid={article.uid} comments={comments.data} />
       </article>

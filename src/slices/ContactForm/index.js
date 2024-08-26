@@ -1,4 +1,4 @@
-import { Bounded } from "@/components/Bounded";
+import { Bounded } from "@/components/layout/Bounded";
 
 const Field = ({ label, children }) => {
   return (
@@ -48,8 +48,7 @@ const ContactForm = () => {
       <form
         action="/api/contact"
         method="post"
-        className="grid grid-cols-1 gap-6"
-      >
+        className="grid grid-cols-1 gap-6">
         <InputField label="Name" name="name" placeholder="Jane Doe" />
         <InputField
           label="Email Address"
@@ -64,8 +63,7 @@ const ContactForm = () => {
         />
         <button
           type="submit"
-          className="ml-auto inline-flex items-center gap-2"
-        >
+          className="ml-auto inline-flex items-center gap-2">
           Send message{" "}
           <span aria-hidden={true} className="text-xl">
             &rarr;

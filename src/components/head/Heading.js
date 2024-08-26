@@ -5,18 +5,20 @@ export const Heading = ({
   size = "4xl",
   children,
   className,
+  id, // Pass the ID prop
 }) => {
   return (
     <Comp
+      /* Add the ID to the heading itself */
+      id={id}
       className={clsx(
         "font-sans font-semibold tracking-tighter text-slate-800",
         size === "4xl" && "text-3xl md:text-4xl",
         size === "3xl" && "text-3xl",
         size === "2xl" && "text-2xl",
         size === "xl" && "text-xl",
-        className,
-      )}
-    >
+        className
+      )}>
       {children}
     </Comp>
   );

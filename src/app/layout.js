@@ -22,8 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.className} ${libre_baskerville.className}`}
-    >
+      className={`${inter.className} ${libre_baskerville.className} scroll-smooth`}>
       <body className="overflow-x-hidden antialiased">
         <main>
           {process.env.NODE_ENV === "development" && (
@@ -34,8 +33,7 @@ export default function RootLayout({ children }) {
                 textAlign: "center",
                 fontSize: "0.85rem",
                 color: "#fff",
-              }}
-            >
+              }}>
               <p>
                 <strong>👋 Welcome to your new website!</strong> To customize
                 the code and content of this site,{" "}
@@ -43,8 +41,7 @@ export default function RootLayout({ children }) {
                   href="https://github.com/prismicio-community/nextjs-starter-prismic-blog/tree/master/docs"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ textDecoration: "underline" }}
-                >
+                  style={{ textDecoration: "underline" }}>
                   see the documentation
                 </a>
                 . Remove this bar in <code>app/layout.js</code>.

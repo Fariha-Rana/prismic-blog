@@ -1,14 +1,13 @@
 import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
-import { Layout } from "@/components/Layout";
-import { Bounded } from "@/components/Bounded";
-import { Article } from "@/components/Article";
+import { Layout } from "@/components/layout/Layout";
+import { Bounded } from "@/components/layout/Bounded";
+import { Article } from "@/components/layout/Article";
 
 export async function generateMetadata() {
   const client = createClient();
   const settings = await client.getSingle("settings");
-  console.log("settings", settings);
 
   return {
     title: prismic.asText(settings.data.name),

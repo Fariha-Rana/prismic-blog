@@ -6,7 +6,7 @@ import { getExcerpt } from "@/lib/getExcerpt";
 import { findFirstImage } from "@/lib/findFirstImage";
 import { dateFormatter } from "@/lib/dateFormatter";
 
-import { Heading } from "./Heading";
+import { Heading } from "@/components/head/Heading";
 
 export function Article({ article }) {
   const featuredImage =
@@ -14,7 +14,8 @@ export function Article({ article }) {
       article.data.featuredImage) ||
     findFirstImage(article.data.slices);
   const date = prismic.asDate(
-    article.data.publishDate || article.first_publication_date,
+    3,
+    article.data.publishDate || article.first_publication_date
   );
   const excerpt = getExcerpt(article.data.slices);
 

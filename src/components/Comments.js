@@ -1,7 +1,7 @@
 "use client";
 
-import { Bounded } from "./Bounded";
-import { Heading } from "./Heading";
+import { Bounded } from "./layout/Bounded";
+import { Heading } from "@/components/head/Heading";
 import { useState } from "react";
 
 export function Comments({ id, uid, comments }) {

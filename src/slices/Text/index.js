@@ -1,7 +1,7 @@
 import * as prismic from "@prismicio/client";
 
-import { Bounded } from "@/components/Bounded";
-import { PrismicRichText } from "@/components/PrismicRichText";
+import { Bounded } from "@/components/layout/Bounded";
+import { PrismicRichText } from "@/components/layout/PrismicRichText";
 
 const Text = ({ slice }) => {
   return (

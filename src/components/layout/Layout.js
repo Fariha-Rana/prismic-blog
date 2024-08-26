@@ -1,12 +1,12 @@
-import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { Header } from "@/components/head/Header";
+import { Footer } from "../Footer";
 
 export function Layout({
   navigation,
   settings,
-  withHeaderDivider,
-  withProfile,
-  withSignUpForm,
+  withHeaderDivider = true,
+  withProfile = true,
+  withSignUpForm = true,
   children,
 }) {
   return (

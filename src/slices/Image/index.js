@@ -1,8 +1,8 @@
 import * as prismic from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 
-import { Bounded } from "@/components/Bounded";
-import { PrismicRichText } from "@/components/PrismicRichText";
+import { Bounded } from "@/components/layout/Bounded";
+import { PrismicRichText } from "@/components/layout/PrismicRichText";
 
 const Image = ({ slice }) => {
   const image = slice.primary.image;
